@@ -144,3 +144,57 @@ main {
 .container .profile-results.hide {
   display: none;
 }
+
+.profile-results .loading-message,
+.profile-results .error-message {
+  font-size: var(--font-md);
+  color: var(--muted-foreground);
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+}
+
+.profile-results .error-message {
+  color: #d64545;
+}
+
+.container header #btn-search:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  width: 100%;
+  padding: var(--spacing-lg);
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  flex: 1;
+  text-align: left;
+}
+
+.profile-info h2 {
+  font-size: var(--font-xl);
+  font-weight: 600;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.profile-info p {
+  font-size: var(--font-sm);
+  color: var(--muted-foreground);
+  margin: 0;
+}
