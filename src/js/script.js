@@ -1,4 +1,4 @@
-import { fetchGitHubUser } from './api.js';
+import { fetchGitHubUser, fetchGithubUserRepos } from './api.js';
 import { elements, renderProfile, setLoadingState, showMessage } from './ui.js';
 
 const handleSearch = async () => {
@@ -13,7 +13,8 @@ const handleSearch = async () => {
 
   try {
     const data = await fetchGitHubUser(userName);
-    renderProfile(data);
+    const userRepos = await fetchGithubUserRepos(userName);
+    renderProfile(data, userRepos);
   } catch (error) {
     showMessage('Usuário não encontrado!');
   } finally {

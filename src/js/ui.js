@@ -18,7 +18,21 @@ export const setLoadingState = (isLoading) => {
   }
 };
 
-export const renderProfile = (data) => {
+export const renderProfile = (data, userRepos) => {
+  const repositoriesHTML = userRepos.length > 0 ? userRepos.map(repo => `
+    <div class="repository-card">
+      <a href="${repo.html_url}" target="_blank">
+      <h3>${repo.name}</h3>
+      <div class="repository-stats">
+        <span>⭐ stars: ${repo.stargazers_count}</span>
+        <span>🍴 forks: ${repo.forks_count}</span>
+        <span>👀 watchers: ${repo.watchers_count}</span>
+        <span>💻 language: ${repo.language || 'não informado'}</span>
+      </div>
+      </a>
+    </div>
+  `).join('') : `<p>Nenhum repositório encontrado.</p>`;
+
   profile.innerHTML = `
     <div class="profile-card">
       <img src="${data.avatar_url}" alt="Avatar de ${data.name || data.login}" class="profile-avatar">
@@ -37,8 +51,17 @@ export const renderProfile = (data) => {
          <h4>👥 Seguindo</h4>
          <span>${data.following}</span>
       </div>
-    </div>`;
-};
+    </div>
+
+    <div class="profile-repositories">
+      <h2>Repositórios</h2>
+     <div class="repositories">
+        ${repositoriesHTML}
+     </div>
+    </div>
+    `;
+
+}
 
 export const showMessage = (message, className = 'error-message') => {
   profile.innerHTML = `<p class="${className}">${message}</p>`;

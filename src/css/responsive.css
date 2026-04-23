@@ -11,6 +11,10 @@
     font-size: var(--font-xl);
   }
   
+  .repositories {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
   .repositories ul {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -25,6 +29,10 @@
   .container header #input-search,
   .container header #btn-search {
     max-width: 100%;
+  }
+  
+  .repositories {
+    grid-template-columns: 1fr;
   }
   
   .repositories ul { 
